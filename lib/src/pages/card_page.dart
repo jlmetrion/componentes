@@ -63,28 +63,26 @@ class CardPage extends StatelessWidget {
 }
 
 Widget _cardTipo2() {
-  final card = Container(
-    child: Column(
-      children: [
+  final card = Column(
+    children: [
 
-        const FadeInImage(
-          image: NetworkImage('https://upload.wikimedia.org/wikipedia/commons/9/91/Oahu_Landscape.jpg'),
-          placeholder: AssetImage('assets/jar-loading.gif'),
-          fadeInDuration: Duration(milliseconds: 200),
-          height: 300.0,
-          fit: BoxFit.cover,
+      const FadeInImage(
+        image: NetworkImage('https://upload.wikimedia.org/wikipedia/commons/9/91/Oahu_Landscape.jpg'),
+        placeholder: AssetImage('assets/jar-loading.gif'),
+        fadeInDuration: Duration(milliseconds: 200),
+        height: 300.0,
+        fit: BoxFit.cover,
+      ),
+
+      // const Image(image: NetworkImage('https://upload.wikimedia.org/wikipedia/commons/9/91/Oahu_Landscape.jpg'),
+      // ),
+       Container(
+         padding: const EdgeInsets.all (10.0),
+        child: const Text('No se que colocar')
         ),
 
-        // const Image(image: NetworkImage('https://upload.wikimedia.org/wikipedia/commons/9/91/Oahu_Landscape.jpg'),
-        // ),
-         Container(
-           padding: const EdgeInsets.all (10.0),
-          child: const Text('No se que colocar')
-          ),
 
-
-      ],
-    ),
+    ],
   );
 
   return Container (

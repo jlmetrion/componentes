@@ -5,6 +5,8 @@ import '../pages/animated_container.dart';
 import '../pages/avatar_page.dart';
 import '../pages/home_page.dart';
 import '../pages/card_page.dart';
+import 'package:componentes/src/pages/input_page.dart';
+
 
 Map<String, WidgetBuilder> getApplicationRoutes() {
   return <String, WidgetBuilder>{
@@ -13,6 +15,7 @@ Map<String, WidgetBuilder> getApplicationRoutes() {
     'avatar': (BuildContext context) => const AvatarPage(),
     'card' : (BuildContext context  ) => const CardPage(),
     'animatedContainer' : (BuildContext context  ) => const AnimatedContainerPage(),
+    'inputs' : (BuildContext context) => const InputPage(), 
     
   };
 }
