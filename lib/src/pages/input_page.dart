@@ -11,6 +11,9 @@ class _InputPageState extends State<InputPage> {
   String _nombre = '';
   String _email = '';
   String _password = '';
+  String _fecha = '';
+
+  TextEditingController _inputFieldDateController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +29,8 @@ class _InputPageState extends State<InputPage> {
           _crearEmail(),
           const Divider(),
           _crearPassword(),
+          const Divider(),
+          _crearFecha(context),
           const Divider(),
           _crearPersona(),
         ],
@@ -72,7 +77,7 @@ class _InputPageState extends State<InputPage> {
     );
   }
 
-  Widget _crearPassword (){
+  Widget _crearPassword() {
     return TextField(
       obscureText: true,
       decoration: const InputDecoration(
@@ -87,6 +92,42 @@ class _InputPageState extends State<InputPage> {
         _password = valor;
       }),
     );
+  }
+
+  Widget _crearFecha(BuildContext context) {
+    return TextField(
+      enableInteractiveSelection: false,
+      controller: _inputFieldDateController,
+      decoration: const InputDecoration(
+        border: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(20.0))),
+        hintText: 'Fecha de Nacimiento',
+        labelText: 'Nacimiento',
+        suffixIcon: Icon(Icons.calendar_month_outlined),
+        icon: Icon(Icons.calendar_today),
+      ),
+      onTap: () {
+        FocusScope.of(context).requestFocus(/*new */ FocusNode());
+        _selectDate(context);
+      },
+    );
+  }
+
+  _selectDate(BuildContext context) async {
+    DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: /*new */ DateTime.now(),
+      firstDate: /*new */ DateTime(2018),
+      lastDate: /*new */ DateTime(2025),
+      locale: const Locale('es', 'ES'),
+    );
+
+    if (picked != null) {
+      setState(() {
+        _fecha = picked.toString();
+        _inputFieldDateController.text = _fecha;
+      });
+    }
   }
 
   Widget _crearPersona() {
